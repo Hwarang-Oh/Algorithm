@@ -1,0 +1,22 @@
+{
+  "name": "github-action-daily-algorithm",
+  "version": "1.0.0",
+  "description": "<aside>\r 💡 **플레 가즈아!!!\r SSAFY 11반 알고리즘 스터디..!!**",
+  "main": "update_daily_algorithm.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Badamandarin",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/github": "^5.0.0",
+    "@octokit/rest": "^21.0.2",
+    "axios": "^1.7.8",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "mysql2": "^3.11.5",
+    "openai": "^4.77.0"
+  }
+}
