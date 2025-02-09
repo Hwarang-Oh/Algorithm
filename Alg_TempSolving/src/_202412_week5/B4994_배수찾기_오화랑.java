@@ -11,13 +11,6 @@ import java.util.*;
  */
 
 public class B4994_배수찾기_오화랑 {
-    static class OtherSolution {
-        void run() throws IOException {
-            Scanner sc = new Scanner(System.in);
-            String
-        }
-    }
-
     static class Solution {
         void run() throws IOException {
             Scanner sc = new Scanner(System.in);

@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class Test {
     static class Pair {
@@ -14,15 +15,13 @@ public class Test {
         }
     }
 
-    public static void main(String[] args) {
-
-        Queue<Pair> queue = new ArrayDeque<>();
-        queue.offer(new Pair(3, 3));
-        System.out.println(queue.peek());
-
-        Pair peeked = queue.peek();
-        peeked.x = 5;
-        peeked.y = 5;
-        System.out.println(queue.peek());
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine(), "");
+        while (st.hasMoreTokens()) {
+            System.out.println(st.nextToken());
+        }
+        System.out.println(Integer.parseInt("010"));
+        // System.out.println(answer);
     }
 }
