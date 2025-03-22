@@ -16,12 +16,6 @@ public class Test {
     }
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine(), "");
-        while (st.hasMoreTokens()) {
-            System.out.println(st.nextToken());
-        }
-        System.out.println(Integer.parseInt("010"));
-        // System.out.println(answer);
+        System.out.println(2 == Math.ceil(4 / 2));
     }
 }

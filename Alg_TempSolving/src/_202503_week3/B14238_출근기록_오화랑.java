@@ -12,35 +12,87 @@ package _202503_week3;
  * TYPE : 출근기록 S가 주어졌을 때, S의 모든 순열 중에서 올바른 출근 기록인 것을 아무거나 출력하는 프로그램을 작성
  * ! S의 길이는 50을 넘지 않는다.
  * IMP : 정말 오랜만의 순조부 => Naive한 방법으로는 시간 초과 
- * ? Naive한 순열이 안되면, NextPermutation?
+ * ? Naive한 순열이 안되면, NextPermutation? => NextP도 시간 초과
  */
 
 import java.io.*;
+import java.util.*;
 
 public class B14238_출근기록_오화랑 {
 
     static class Solution {
         String S;
-        boolean made;
-        int targetSize;
         char[] workList;
 
         void run() throws IOException {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             S = input.readLine();
-            targetSize = S.length();
-            workList = new char[targetSize];
+            workList = new char[S.length()];
+            for (int i = 0; i < S.length(); i++)
+                workList[i] = S.charAt(i);
 
-            int aCount, bCount, cCount;
-            aCount = bCount = cCount = 0;
-            for (int i = 0; i < targetSize; i++) {
-                if (S.charAt(i) == 'A')
-                    aCount++;
-                else if (S.charAt(i) == 'B')
-                    bCount++;
-                else
-                    cCount++;
+            Arrays.sort(workList);
+            boolean made = false;
+            do {
+                if (check(workList)) {
+                    made = true;
+                    break;
+                }
+            } while (nextP(workList));
+
+            if (made)
+                System.out.println(String.valueOf(workList));
+            else
+                System.out.println(-1);
+
+        }
+
+        boolean nextP(char[] workList) {
+            int N = workList.length;
+
+            // Step 1
+            int i = N - 1;
+            while (i > 0 && workList[i - 1] >= workList[i])
+                --i;
+
+            if (i == 0)
+                return false;
+
+            // Step 2
+            int j = N - 1;
+            while (workList[i - 1] >= workList[j])
+                --j;
+
+            // Step 3
+            swap(workList, i - 1, j);
+
+            // Step 4
+            int k = N - 1;
+            while (i < k)
+                swap(workList, i++, k--);
+
+            return true;
+
+        }
+
+        void swap(char[] workList, int i, int j) {
+            char temp = workList[i];
+            workList[i] = workList[j];
+            workList[j] = temp;
+        }
+
+        boolean check(char[] workList) {
+            for (int i = 0; i < workList.length; i++) {
+                if (workList[i] == 'A')
+                    continue;
+
+                if (i >= 1 && workList[i] == workList[i - 1])
+                    return false;
+
+                if (i >= 2 && workList[i] == 'C' && workList[i - 2] == 'C')
+                    return false;
             }
+            return true;
         }
     }
 
